@@ -277,10 +277,6 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'konten', 'as' => 'kon
 
 Route::group(['middleware' => 'checksession', 'prefix' => 'users', 'as' => 'users.'], function () {
 
-    Route::get('/ajaxGetSession', [
-        'uses' => 'Admin\UsersController@ajaxGetSession'
-    ]);
-
     Route::get('/', [
         'as' => 'index',
         'uses' => 'Admin\UsersController@index'

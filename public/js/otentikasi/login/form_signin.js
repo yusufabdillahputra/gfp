@@ -20,6 +20,9 @@ $(document).ready(function () {
             username_users: {
                 required: true
             },
+            password_users: {
+                required: true
+            },
             email_users: {
                 required: true,
                 email: true
@@ -31,6 +34,9 @@ $(document).ready(function () {
             },
             username_users: {
                 required: "Tolong masukkan username anda"
+            },
+            password_users: {
+                required: "Tolong masukkan password anda"
             },
             email_users: {
                 required: 'Tolong masukkan email anda',

@@ -198,7 +198,7 @@ class UsersModel extends Model
             $query = self::create([
                 'username_users' => $request_data['username_users'],
                 'akses_users' => env('AKSES_DONATUR'),
-                'password_users' => env('DEFAULT_PASSWORD'),
+                'password_users' => Hash::make($request_data['password_users']),
                 'nama_users' => $request_data['nama_users'],
                 'email_users' => $request_data['email_users'],
                 'remember_token' => encrypt(rand(1,99)),

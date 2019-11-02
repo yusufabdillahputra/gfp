@@ -31,17 +31,19 @@ class AuthController extends OtentikasiController
         $request->validate(
             [
                 'username_users' => 'required|unique:tbl_rsc_users',
-                'email_users' => 'required|email|unique:tbl_rsc_users'
+                'email_users' => 'required|email|unique:tbl_rsc_users',
+                'password_users' => 'required'
             ],
             [
                 'username_users.unique' => "Username sudah terpakai",
                 'username_users.required' => "Username tidak boleh kosong",
                 'email_users.email' => "Format email anda salah",
                 'email_users.required' => "Email tidak boleh kosong",
-                'email_users.unique' => "Email sudah terpakai"
+                'email_users.unique' => "Email sudah terpakai",
+                'password_users' => "Password tidak boleh kosong"
             ]
         );
-        
+
         $status = $this->Users_Model->daftarDonatur($request->all());
         $redirect = redirect(route('login'));
         if ($status['code'] == 200) {

@@ -17,7 +17,7 @@
                         </a>
                     </div>
                     <!-- END Header -->
-                    
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -38,16 +38,23 @@
                             <div class="block-content">
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <label for="username_users">Nama Lengkap</label>
+                                        <label for="nama_users">Nama Lengkap</label>
                                         <input autofocus type="text" class="form-control" id="nama_users"
                                                name="nama_users" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-12">
-                                        <label for="nama_users">Username</label>
+                                        <label for="username_users">Username</label>
                                         <input type="text" class="form-control" id="username_users"
                                                name="username_users" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <label for="password_users">Password</label>
+                                        <input type="text" class="form-control" id="password_users"
+                                               name="password_users" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
