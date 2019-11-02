@@ -363,7 +363,9 @@ class UsersModel extends Model
              * Jika ada hapus
              */
             if (!empty($path_foto['foto_users'])) {
-                return Storage::delete($path_foto['foto_users']);
+                if ($path_foto['foto_users'] !== 'users/default.png') {
+                    return Storage::delete($path_foto['foto_users']);
+                }
             }
         } else {
             return $path_foto['foto_users'];
