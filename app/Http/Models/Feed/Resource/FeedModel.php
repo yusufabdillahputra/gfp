@@ -8,7 +8,6 @@ use App\Http\Models\Users\Resource\UsersModel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -115,8 +114,8 @@ class FeedModel extends Model
             $data = DB::table($this->view)
                 ->where('selisih_tanggal_feed', '>', 0)
                 ->where('draft_feed', 1)
-                ->offset($offset)
-                ->limit($limit)
+                ->skip($offset)
+                ->take($limit)
                 ->orderBy('created_at', 'desc')
                 ->get();
             $status = [
@@ -142,8 +141,8 @@ class FeedModel extends Model
                 ->where('selisih_tanggal_feed', '>', 0)
                 ->where('draft_feed', 1)
                 ->where('id_label', $id_label)
-                ->offset($offset)
-                ->limit($limit)
+                ->skip($offset)
+                ->take($limit)
                 ->orderBy('created_at', 'desc')
                 ->get();
             $status = [
@@ -412,9 +411,12 @@ class FeedModel extends Model
      * @param [type] $id
      * @return void
      */
-    public function deleteById($id)
+    public function deleteById($id, $deleted_by)
     {
         try {
+            self::where($this->primaryKey, $id)->update([
+                'deleted_by' => $deleted_by
+            ]);
             self::where($this->primaryKey, $id)->delete();
             $status = [
                 'code' => 200,

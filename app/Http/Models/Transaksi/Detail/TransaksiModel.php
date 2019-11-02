@@ -233,8 +233,8 @@ class TransaksiModel extends Model
                 ->where('id_feed', $id)
                 ->where('jenis_transaksi', 2)
                 ->orderBy('created_at', 'desc')
-                ->offset($offset)
-                ->limit($limit)
+                ->skip($offset)
+                ->take($limit)
                 ->get();
             $status = [
                 'code' => 200,
@@ -313,8 +313,8 @@ class TransaksiModel extends Model
         try {
             $data = DB::table($this->view)
                 ->where('created_by', $id)
-                ->offset($offset)
-                ->limit($limit)
+                ->skip($offset)
+                ->take($limit)
                 ->orderBy('created_at', 'desc')
                 ->get();
             $status = [

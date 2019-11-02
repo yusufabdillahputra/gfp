@@ -40,6 +40,7 @@
             </div>
         @endisset
 
+        @if(!empty($gambar_campaign))
         <div class="block block-rounded">
             <div class="block-content">
                 <div class="slick_campaign">
@@ -51,6 +52,7 @@
                 </div>
             </div>
         </div>
+        @endif
 
         <div class="block block-rounded">
             <div class="block-content">

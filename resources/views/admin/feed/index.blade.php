@@ -16,7 +16,7 @@
 @section('modal')
     {{ view('admin.global.partials.modal.password', ['data' => $session]) }}
     {{ view('admin.feed.modal.create', ['created_by' => $session['id_users']]) }}
-    {{ view('admin.feed.modal.delete', ['created_by' => $session['id_users']]) }}
+    {{ view('admin.feed.modal.delete', ['deleted_by' => $session['id_users']]) }}
 @endsection
 
 @section('content')

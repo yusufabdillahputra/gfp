@@ -38,9 +38,10 @@ class MainController extends LandingController
     public function index(Request $request)
     {
         $data_campaign = $this->rsc_model['FeedModel']->getCampaign()['data'];
+        $gambar_campaign = !empty($data_campaign) ? $this->src_model['Img_FeedModel']->getAllByForeignKey($data_campaign->id_feed)['data'] : null;
         return $this->pathView('index', [
             'data_campaign' => $data_campaign,
-            'gambar_campaign' => $this->src_model['Img_FeedModel']->getAllByForeignKey($data_campaign->id_feed)['data'],
+            'gambar_campaign' => $gambar_campaign,
             'feeds' => $this->rsc_model['FeedModel']->getFeedsAppend()['data'],
             'rsc_label' => $this->rsc_model['LabelModel']->getAll()['data']
         ]);

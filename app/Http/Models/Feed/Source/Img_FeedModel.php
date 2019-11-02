@@ -263,7 +263,9 @@ class Img_FeedModel extends Model
                  * Hapus path di tabel tbl_src_img_feed
                  */
                 self::where($this->foreignKey, $id_foreignKey)->forceDelete();
-                return Storage::delete($delete_path);
+                if (!empty($delete_path)) {
+                    return Storage::delete($delete_path);
+                }
             } else {
                 return true;
             }
