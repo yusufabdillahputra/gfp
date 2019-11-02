@@ -16,13 +16,6 @@
                     </div>
                     <div class="block-content">
                         <div class="form-group">
-                            <label class="col-12">Password Lama</label>
-                            <div class="col-md-12">
-                                <input type="password" class="form-control" placeholder="......." id="users_password_lama" name="users_password_lama" required>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="form-group">
                             <label class="col-12">Password Baru</label>
                             <div class="col-md-12">
                                 <input type="password" class="form-control" id="users_password_baru" name="users_password_baru" placeholder="......." required>

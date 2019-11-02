@@ -5,7 +5,7 @@ namespace App\Http\Models\Users\Resource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class UsersModel extends Model
@@ -372,7 +372,7 @@ class UsersModel extends Model
     {
         try {
             self::where($this->primaryKey, $request_data['id_users'])->update([
-                'password_users' => Crypt::encryptString($request_data['users_password_baru'])
+                'password_users' => Hash::make($request_data['users_password_baru'])
             ]);
             $status = [
                 'code' => 200,

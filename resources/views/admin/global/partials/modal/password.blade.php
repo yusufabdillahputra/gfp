@@ -18,15 +18,6 @@
                                         <h3>Ganti Password</h3>
                                     </div>
                                     <hr>
-                                    <div class="row clearfix">
-                                        <div class="col-md-12">
-                                            <div class="form-group form-group-default required">
-                                                <label>Password Lama</label>
-                                                <input type="password" class="form-control" placeholder="......." id="users_password_lama" name="users_password_lama" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default required">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Hash;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
@@ -72,7 +73,7 @@ class UsersController extends AdminController
     {
         /**
          * Ambil data sesuai akses user
-         */ 
+         */
         $akses_users = $request->session()->get('akses_users');
         if ($akses_users == env('AKSES_ROOT')) {
             $users = $this->dtl_model['RootModel']->getById($request->session()->get('id_users'))['data'];
@@ -83,7 +84,7 @@ class UsersController extends AdminController
         } else {
             redirect(route('otentikasi.logout'));
         }
-        
+
         $username = $users->username_users;
         $email = $users->email_users;
         if (($username !== $request->get('rsc')['username_users']) OR ($email !== $request->get('rsc')['email_users'])) {
@@ -105,12 +106,12 @@ class UsersController extends AdminController
             );
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator);
-            }   
+            }
         }
         /**
          * ######### Akhir Validasi
          */
-        
+
         $status_rsc = $this->rsc_model->updateById($request->all()['rsc']);
         $akses_users = $request->session()->get('akses_users');
         if ($akses_users == env('AKSES_ROOT')) {
@@ -208,12 +209,12 @@ class UsersController extends AdminController
                 'email_users.unique' => "Email sudah terpakai"
             ]
         );
-        
+
         if ($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator);
         }
-        
+
         $status_rsc = $this->rsc_model->createData($request->all()['rsc']);
         $redirect = redirect(route('users.root.index'));
         if ($status_rsc['code'] == 200) {
@@ -228,7 +229,7 @@ class UsersController extends AdminController
     {
         /**
          * Ambil data sesuai akses user
-         */ 
+         */
         $akses_users = $request->get('rsc')['akses_users'];
         if ($akses_users == env('AKSES_ROOT')) {
             $users = $this->dtl_model['RootModel']->getById($request->get('rsc')['id_users'])['data'];
@@ -239,7 +240,7 @@ class UsersController extends AdminController
         } else {
             redirect(route('otentikasi.logout'));
         }
-        
+
         $username = $users->username_users;
         $email = $users->email_users;
         if (($username !== $request->get('rsc')['username_users']) OR ($email !== $request->get('rsc')['email_users'])) {
@@ -261,13 +262,13 @@ class UsersController extends AdminController
             );
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator);
-            }   
+            }
         }
         /**
          * ######### Akhir Validasi
          */
-        
-        
+
+
         $status_rsc = $this->rsc_model->updateById($request->all()['rsc']);
         $status_dtl = $this->dtl_model['RootModel']->updateById($request->all()['dtl']);
         $redirect = redirect(route('users.root.edit') . '?id=' . encrypt($request->all()['rsc']));
@@ -364,12 +365,12 @@ class UsersController extends AdminController
                 'email_users.unique' => "Email sudah terpakai"
             ]
         );
-        
+
         if ($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator);
         }
-        
+
         $status_rsc = $this->rsc_model->createData($request->all()['rsc']);
         $redirect = redirect(route('users.admin.index'));
         if ($status_rsc['code'] == 200) {
@@ -384,7 +385,7 @@ class UsersController extends AdminController
     {
         /**
          * Ambil data sesuai akses user
-         */ 
+         */
         $akses_users = $request->get('rsc')['akses_users'];
         if ($akses_users == env('AKSES_ROOT')) {
             $users = $this->dtl_model['RootModel']->getById($request->get('rsc')['id_users'])['data'];
@@ -395,7 +396,7 @@ class UsersController extends AdminController
         } else {
             redirect(route('otentikasi.logout'));
         }
-        
+
         $username = $users->username_users;
         $email = $users->email_users;
         if (($username !== $request->get('rsc')['username_users']) OR ($email !== $request->get('rsc')['email_users'])) {
@@ -417,12 +418,12 @@ class UsersController extends AdminController
             );
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator);
-            }   
+            }
         }
         /**
          * ######### Akhir Validasi
          */
-        
+
         $status_rsc = $this->rsc_model->updateById($request->all()['rsc']);
         $status_dtl = $this->dtl_model['AdminModel']->updateById($request->all()['dtl']);
         $redirect = redirect(route('users.admin.edit') . '?id=' . encrypt($request->all()['rsc']));
@@ -519,12 +520,12 @@ class UsersController extends AdminController
                 'email_users.unique' => "Email sudah terpakai"
             ]
         );
-        
+
         if ($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator);
         }
-        
+
         $status_rsc = $this->rsc_model->createData($request->all()['rsc']);
         $redirect = redirect(route('users.donatur.index'));
         if ($status_rsc['code'] == 200) {
@@ -539,7 +540,7 @@ class UsersController extends AdminController
     {
         /**
          * Ambil data sesuai akses user
-         */ 
+         */
         $akses_users = $request->get('rsc')['akses_users'];
         if ($akses_users == env('AKSES_ROOT')) {
             $users = $this->dtl_model['RootModel']->getById($request->get('rsc')['id_users'])['data'];
@@ -550,7 +551,7 @@ class UsersController extends AdminController
         } else {
             redirect(route('otentikasi.logout'));
         }
-        
+
         $username = $users->username_users;
         $email = $users->email_users;
         if (($username !== $request->get('rsc')['username_users']) OR ($email !== $request->get('rsc')['email_users'])) {
@@ -572,12 +573,12 @@ class UsersController extends AdminController
             );
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator);
-            }   
+            }
         }
         /**
          * ######### Akhir Validasi
          */
-        
+
         $status_rsc = $this->rsc_model->updateById($request->all()['rsc']);
         $status_dtl = $this->dtl_model['DonaturModel']->updateById($request->all()['dtl']);
         $redirect = redirect(route('users.donatur.edit') . '?id=' . encrypt($request->all()['rsc']));
@@ -631,26 +632,6 @@ class UsersController extends AdminController
     }
 
     //===============##################=============
-
-    /**
-     * Kirim session ke ajax
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function ajaxGetSession(Request $request)
-    {
-        $id_users = $request->session()->get('id_users');
-        $fetch = $this->rsc_model->getById($id_users)['data'];
-        $data = [
-            'id_users' => $fetch['id_users'],
-            'username_users' => $fetch['username_users'],
-            'password_users' => Crypt::decryptString($fetch['password_users']),
-            'akses_users' => $fetch['akses_users'],
-            'nama_users' => $fetch['nama_users']
-        ];
-        return $data;
-    }
 
     public function editPassword(Request $request)
     {
