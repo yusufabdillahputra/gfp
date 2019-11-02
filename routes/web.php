@@ -26,6 +26,11 @@ Route::get('/signin', [
     'uses' => 'Otentikasi\AuthController@signin'
 ]);
 
+Route::get('/forgot', [
+    'as' => 'forgot',
+    'uses' => 'Otentikasi\AuthController@forgotPassword'
+]);
+
 Route::group(['prefix' => 'otentikasi', 'as' => 'otentikasi.'], function () {
     Route::post('login', [
         'as' => 'login',
@@ -35,6 +40,21 @@ Route::group(['prefix' => 'otentikasi', 'as' => 'otentikasi.'], function () {
     Route::post('signin', [
         'as' => 'signin.post',
         'uses' => 'Otentikasi\AuthController@createDonatur'
+    ]);
+
+    Route::post('forgot', [
+        'as' => 'forgot.post',
+        'uses' => 'Otentikasi\AuthController@createForgotPassword'
+    ]);
+
+    Route::get('form', [
+        'as' => 'forgot.form',
+        'uses' => 'Otentikasi\AuthController@formForgotPassword'
+    ]);
+
+    Route::put('edit', [
+        'as' => 'forgot.edit',
+        'uses' => 'Otentikasi\AuthController@editForgotPassword'
     ]);
 
     Route::get('logout', [

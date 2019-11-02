@@ -18,7 +18,16 @@
                         <h2 class="h5 font-w400 text-muted mb-0">Bantu Sesama Bahagia Bersama</h2>
                     </div>
                     <!-- END Header -->
-
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-danger">
+                            <i class="si si-exclamation"></i> {{ $message }}
+                        </div>
+                    @endif
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            {{ $message }}
+                        </div>
+                    @endif
                     <!-- Sign In Form -->
                     <form id="form-login" action="{{ route('otentikasi.login') }}" method="post">
                         @csrf
@@ -31,7 +40,7 @@
                             @else
                                 bg-primary
                             @endif
-                            ">
+                                ">
                                 @if(session()->get('HTTP_Code'))
                                     <h3 class="block-title">Username / Password Anda Salah</h3>
                                 @elseif(session()->get('success'))
@@ -52,6 +61,11 @@
                                         <label for="password_users">Password</label>
                                         <input type="password" class="form-control" id="password_users" name="password_users" required>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <a class="link-effect text-muted mr-10 mb-5 d-inline-block" href="{{ route('forgot') }}">
+                                        <i class="si si-exclamation mr-5"></i> Lupa Password
+                                    </a>
                                 </div>
                             </div>
                             <div class="block-content bg-body-light">

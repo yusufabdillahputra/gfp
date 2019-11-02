@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Otentikasi;
 
 use App\Http\Models\Users\Resource\UsersModel;
 use App\Mail\DaftarEmail;
+use App\Mail\ForgotPasswordEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Parent\OtentikasiController;
 use App\Http\Models\Otentikasi\AuthModel;
@@ -24,6 +25,43 @@ class AuthController extends OtentikasiController
     public function signIn()
     {
         return $this->pathView('signin');
+    }
+
+    public function forgotPassword()
+    {
+        return $this->pathView('forgot');
+    }
+
+    public function createForgotPassword(Request $request)
+    {
+        $fetch = $this->Users_Model->getIdByEmail($request->post('email_users'))['data'];
+        if (empty($fetch)) {
+            return redirect()->back()->with(['error' => 'Email tidak terdaftar']);
+        } else if (!empty($fetch)) {
+            $data = new \stdClass();
+            $data->link = route('otentikasi.forgot.form')."?id=".encrypt($fetch->id_users);
+            Mail::to($request->get('email_users'))->send(new ForgotPasswordEmail($data));
+            return redirect()->back()->with(['success' => 'Reset password sudah dikirim ke email anda']);
+        }
+    }
+
+    public function formForgotPassword(Request $request)
+    {
+        return $this->pathView('reset_password', [
+            'id_users' => decrypt($request->get('id'))
+        ]);
+    }
+
+    public function editForgotPassword(Request $request)
+    {
+        $status = $this->Users_Model->editPassword($request->all());
+        $redirect = redirect(route('login'));
+        if ($status['code'] == 200) {
+            return $redirect->with(['success' => 'Password berhasil dirubah']);
+        }
+        if ($status['code'] == 500) {
+            return $redirect->with(['error' => $status['message']]);
+        }
     }
 
     public function createDonatur(Request $request)
