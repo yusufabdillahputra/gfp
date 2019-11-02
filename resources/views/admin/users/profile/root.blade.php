@@ -102,6 +102,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-default required">
+                                        <label>Telp. / Hp</label>
+                                        <input type="text" class="form-control" value="{{ $data->telp_users }}"
+                                               name="rsc[telp_users]" placeholder="0000-0000-0000" required>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <label class="col-md-3 control-label">Jenis Kelamin</label>
                                 <div class="col-md-9">

@@ -24,6 +24,7 @@ class UsersModel extends Model
         "akses_users",
         "nama_users",
         "email_users",
+        "telp_users",
         "remember_token",
         "jenis_kelamin_users",
         "foto_users",
@@ -242,6 +243,7 @@ class UsersModel extends Model
                     'akses_users' => $array_data['akses_users'],
                     'nama_users' => $array_data['nama_users'],
                     'email_users' => $array_data['email_users'],
+                    'telp_users' => $array_data['telp_users'],
                     'jenis_kelamin_users' => $array_data['jenis_kelamin_users'],
                     'updated_by' => $array_data['updated_by'],
                     'updated_at' => date("Y-m-d H:i:s")
