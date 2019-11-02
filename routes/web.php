@@ -599,6 +599,11 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'dompet', 'as' => 'dom
         'uses' => 'Landing\DompetController@ajaxAppendTransaksi'
     ]);
 
+    Route::post('/ajaxAppendKebutuhan', [
+        'as' => 'ajaxAppendKebutuhan',
+        'uses' => 'Landing\DompetController@ajaxAppendKebutuhan'
+    ]);
+
     Route::group(['middleware' => 'checksession', 'prefix' => 'topup', 'as' => 'topup.'], function () {
         Route::get('/', [
             'as' => 'index',
@@ -638,6 +643,15 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'dompet', 'as' => 'dom
             'as' => 'create',
             'uses' => 'Landing\DompetController@createPenarikan'
         ]);
+    });
+
+    Route::group(['middleware' => 'checksession', 'prefix' => 'kebutuhan', 'as' => 'kebutuhan.'], function () {
+
+        Route::get('/', [
+            'as' => 'index',
+            'uses' => 'Landing\DompetController@kebutuhanIndex'
+        ]);
+
     });
 
 });

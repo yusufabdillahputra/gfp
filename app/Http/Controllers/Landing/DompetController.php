@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Landing;
 
+use App\Http\Models\Donasi\Selain_Uang\DonasiFeedModel;
 use App\Http\Models\Payment\Resource\PaymentModel;
 use App\Http\Models\Users\Detail\AdminModel;
 use App\Http\Models\Users\Detail\DonaturModel;
@@ -23,6 +24,7 @@ class DompetController extends LandingController
         $this->dtl_model['AdminModel'] = new AdminModel();
         $this->dtl_model['RootModel'] = new RootModel();
         $this->dtl_model['TransaksiModel'] = new TransaksiModel();
+        $this->feed_model['DonasiFeedModel'] = new DonasiFeedModel();
     }
 
     public function index(Request $request)
@@ -160,6 +162,26 @@ class DompetController extends LandingController
         if ($status['code'] == 500) {
             return $redirect->with(['error' => $status['message']]);
         }
+    }
+
+    /**
+     * Sub Modul Transaksi Kebutuhan
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function kebutuhanIndex(Request $request)
+    {
+        return $this->pathView('kebutuhan.index', [
+            'data' => $this->feed_model['DonasiFeedModel']->getByCreatedBy($request->session()->get('id_users'))['data']
+        ]);
+    }
+
+    public function ajaxAppendKebutuhan(Request $request)
+    {
+        return $this->pathView('kebutuhan.ajax.list', [
+            'data' => $this->feed_model['DonasiFeedModel']->getByCreatedBy($request->session()->get('id_users'), $request->post('offset'),$request->post('limit'))['data']
+        ]);
     }
 
 }

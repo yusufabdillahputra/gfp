@@ -1,7 +1,7 @@
 @extends('landing.global.index')
 
 @section('title')
-    Top Up
+    Transaksi
 @endsection
 
 @section('content')

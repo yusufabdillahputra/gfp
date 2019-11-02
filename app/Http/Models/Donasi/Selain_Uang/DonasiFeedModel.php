@@ -38,6 +38,37 @@ class DonasiFeedModel extends Model
      *
      * @return void
      */
+    public function getByCreatedBy($id, $offset = 0, $limit = 6)
+    {
+        try {
+            $data = DB::table($this->view)
+                ->where('created_by', $id)
+                ->skip($offset)
+                ->take($limit)
+                ->orderBy('created_at', 'desc')
+                ->get();
+            $status = [
+                'code' => 200,
+                'status' => 'OK',
+                'message' => 'Data Berhasil Dibaca',
+                'data' => $data
+            ];
+        } catch (QueryException $error) {
+            $status = [
+                'code' => 500,
+                'status' => 'Internal Server Error',
+                'message' => $error
+            ];
+        }
+        return $status;
+    }
+
+    /**
+     * Mengambil semua data yang ada sesuai primary key
+     * Method   : GET
+     *
+     * @return void
+     */
     public function getById($id)
     {
         try {

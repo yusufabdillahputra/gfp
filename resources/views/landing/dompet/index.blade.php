@@ -21,7 +21,7 @@
         @endisset
 
         <div class="row">
-            <div class="col-md-4 invisible" data-toggle="appear">
+            <div class="col-md-3 invisible" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.topup.index') }}">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 invisible" data-toggle="appear">
+            <div class="col-md-3 invisible" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.transaksi.index') }}">
@@ -67,7 +67,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 invisible" data-toggle="appear">
+            <div class="col-md-3 invisible" data-toggle="appear">
+                <div class="block block-rounded">
+                    <div class="block-content p-0 overflow-hidden">
+                        <a class="img-link" href="{{ route('dompet.kebutuhan.index') }}">
+                            <img src="{{ asset('image/sys/dompet/kebutuhan.png') }}"
+                                 class="img-fluid rounded-top"
+                                 alt="Kebutuhan">
+                        </a>
+                    </div>
+                    <div class="block-content border-bottom">
+                        <h4 class="font-size-h5 mb-10">Kebutuhan</h4>
+                        <p class="text-muted">
+                            Transaksi kebutuhan yang anda donasikan.
+                        </p>
+                    </div>
+                    <div class="block-content block-content-full">
+                        <a class="btn btn-sm btn-hero btn-noborder btn-primary btn-block"
+                           href="{{ route('dompet.kebutuhan.index') }}">
+                            Lihat
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 invisible" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.penarikan.index') }}">
