@@ -33,6 +33,34 @@ class DonasiFeedModel extends Model
     const UPDATED_AT = 'updated_at';
 
     /**
+     * Mengambil semua data yang ada sesuai primary key
+     * Method   : GET
+     *
+     * @return void
+     */
+    public function getById($id)
+    {
+        try {
+            $data = DB::table($this->view)
+                ->where($this->primaryKey, $id)
+                ->first();
+            $status = [
+                'code' => 200,
+                'status' => 'OK',
+                'message' => 'Data Berhasil Dibaca',
+                'data' => $data
+            ];
+        } catch (QueryException $error) {
+            $status = [
+                'code' => 500,
+                'status' => 'Internal Server Error',
+                'message' => $error
+            ];
+        }
+        return $status;
+    }
+
+    /**
      * Mengambil semua data yang ada sesuai feed
      * Method   : GET
      *
@@ -230,12 +258,12 @@ class DonasiFeedModel extends Model
         $data_table = Datatables::of($query)
             ->addColumn('action', function ($data) {
                 return '<div class="btn-group">
-                <a href="#modal_edit_kebutuhan" data-e_id_feed_donasi="' . $data->id_feed_donasi . '" data-e_status_feed_donasi="' . $data->status_feed_donasi . '" data-toggle="modal" class="modal_edit_kebutuhan btn btn-xs btn-info"><i class="fa fa-edit"></i> Edit</a>
+                <a href="#modal_edit_kebutuhan" data-e_id_feed_donasi="' . $data->id_feed_donasi . '" data-e_status_feed_donasi="' . $data->status_feed_donasi . '" data-toggle="modal" class="modal_edit_kebutuhan btn btn-xs btn-complete"><i class="fa fa-edit"></i> Edit</a>
+                <a href="'.route('transaksi.kebutuhan.detail').'?id='.encrypt($data->id_feed_donasi).'" class="btn btn-xs btn-success"><i class="fa fa-search"></i> Detail</a>
                 </div>
                 ';
             })->make(true);
         return $data_table;
     }
-
 
 }

@@ -177,3 +177,9 @@ Breadcrumbs::for('transaksi.kebutuhan.index', function ($trail) {
     $trail->push('Kebutuhan', route('transaksi.kebutuhan.index'));
 });
 
+// Home > Transaksi > Kebutuhan > Detail
+Breadcrumbs::for('transaksi.kebutuhan.detail', function ($trail) {
+    $trail->parent('transaksi.kebutuhan.index');
+    $trail->push('Detail', route('transaksi.kebutuhan.detail'));
+});
+

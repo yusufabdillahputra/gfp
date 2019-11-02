@@ -496,6 +496,12 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'transaksi', 'as' => '
             'uses' => 'Admin\TransaksiController@kebutuhanIndex'
         ]);
 
+        Route::get('/detail', [
+            'as' => 'detail',
+            'uses' => 'Admin\TransaksiController@kebutuhanDetail'
+        ]);
+
+
         Route::get('/dtKebutuhan', [
             'uses' => 'Admin\TransaksiController@dataTableKebutuhan'
         ]);

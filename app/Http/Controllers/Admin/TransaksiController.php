@@ -168,6 +168,14 @@ class TransaksiController extends AdminController
         ]);
     }
 
+    public function kebutuhanDetail(Request $request)
+    {
+        return $this->pathView('kebutuhan.detail', [
+            'breadcrumbs' => Breadcrumbs::render('transaksi.kebutuhan.detail'),
+            'data' => $this->feed_model['DonasiFeedModel']->getById(decrypt($request->get('id')))['data']
+        ]);
+    }
+
     public function dataTableKebutuhan(Request $request)
     {
         return $this->feed_model['DonasiFeedModel']->dataTableKebutuhan();
