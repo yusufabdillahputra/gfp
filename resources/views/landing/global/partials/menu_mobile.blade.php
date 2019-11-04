@@ -1,3 +1,4 @@
+@if(isset($session['id_users']))
 @php
     $current_route = Route::currentRouteName();
     $explode_route = explode('.', $current_route);
@@ -5,17 +6,28 @@
 @endphp
 <ul class="nav-main">
     <li class="nav-main-heading">Menu</li>
-    @if(isset($session['id_users']))
-        @if ($current_main_route == 'dompet')
+    @if ($current_main_route == 'dompet')
+        <li class="active">
+    @else
+        <li>
+    @endif
+            <a href="{{ route('dompet.index') }}">
+                <i class="si si-wallet"></i> Dompet
+            </a>
+        </li>
+
+
+    @if($composers_rules_users->reqfeed->read == 1)
+        @if($current_main_route == 'reqfeed')
             <li class="active">
         @else
             <li>
-                @endif
-                <a href="{{ route('dompet.index') }}">
-                    <i class="si si-wallet"></i> Dompet
+        @endif
+                <a href="{{ route('reqfeed.index') }}" class="text-white">
+                    <i class="si si-book-open"></i> Request Feed
                 </a>
             </li>
-        @endif
+    @endif
 
     @if (count($mst_konten_header))
         @foreach($mst_konten_header['konten'] as $konten)
@@ -37,3 +49,4 @@
     @endif
 
 </ul>
+@endif

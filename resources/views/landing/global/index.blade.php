@@ -144,9 +144,11 @@
 
                 <!-- Toggle Sidebar -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                @if(isset($session['id_users']))
                 <button type="button" class="btn btn-circle btn-dual-secondary d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
                     <i class="fa fa-navicon"></i>
                 </button>
+                @endif
                 <!-- END Toggle Sidebar -->
             </div>
             <!-- END Right Section -->
