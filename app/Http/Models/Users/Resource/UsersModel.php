@@ -447,6 +447,10 @@ class UsersModel extends Model
     {
         try {
             $raw_array = array(
+                'reqfeed' =>
+                    array(
+                        'read' => (int)$array_data['reqfeed_read'],
+                    ),
                 'landing' =>
                     array(
                         'read' => (int)$array_data['landing_read'],

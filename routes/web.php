@@ -676,6 +676,50 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'dompet', 'as' => 'dom
 
 });
 
+Route::group(['middleware' => 'checksession', 'prefix' => 'reqfeed', 'as' => 'reqfeed.'], function () {
+
+    Route::post('/ajaxAppendRequestFeed', [
+        'as' => 'ajaxAppendRequestFeed',
+        'uses' => 'Landing\ReqfeedController@ajaxAppendRequestFeed'
+    ]);
+
+    Route::get('/', [
+        'as' => 'index',
+        'uses' => 'Landing\ReqfeedController@index'
+    ]);
+
+    Route::get('/form', [
+        'as' => 'form',
+        'uses' => 'Landing\ReqfeedController@form'
+    ]);
+
+    Route::post('/post', [
+        'as' => 'post',
+        'uses' => 'Landing\ReqfeedController@createRequestFeed'
+    ]);
+
+    Route::put('/edit', [
+        'as' => 'edit',
+        'uses' => 'Landing\ReqfeedController@editRequestFeed'
+    ]);
+
+    Route::post('/form/upload', [
+        'as' => 'form.upload',
+        'uses' => 'Landing\ReqfeedController@uploadGambarFeed'
+    ]);
+
+    Route::delete('/form/img/delete', [
+        'as' => 'form.img.delete',
+        'uses' => 'Landing\ReqfeedController@deleteGambarFeed'
+    ]);
+
+    Route::put('/form/img/thumbnail', [
+        'as' => 'form.img.thumbnail',
+        'uses' => 'Landing\ReqfeedController@setThumbnailFeed'
+    ]);
+
+});
+
 Route::group(['prefix' => 'f', 'as' => 'frontend.'], function () {
     Route::group(['prefix' => 'konten', 'as' => 'konten.'], function () {
         Route::get('/', [

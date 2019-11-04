@@ -22,6 +22,11 @@ class CheckSession
             $fetch = $users_model::select('rules_users')->where('id_users', $id_users)->first();
             $rules = json_decode($fetch->rules_users);
             $route_name = explode('.', $request->route()->getName());
+            if ($route_name[0] == 'reqfeed') {
+                if ($rules->reqfeed->read == 0) {
+                    return redirect(route('error.forbidden'));
+                }
+            }
             if ($route_name[0] == 'landing') {
                 if ($rules->landing->read == 0) {
                     return redirect(route('error.forbidden'));

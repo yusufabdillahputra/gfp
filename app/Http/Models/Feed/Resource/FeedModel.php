@@ -108,6 +108,31 @@ class FeedModel extends Model
         return $status;
     }
 
+    public function getByCreatedByAppend($created_by ,$offset = 0, $limit = 6)
+    {
+        try {
+            $data = DB::table($this->view)
+                ->where('created_by', $created_by)
+                ->skip($offset)
+                ->take($limit)
+                ->orderBy('created_at', 'desc')
+                ->get();
+            $status = [
+                'code' => 200,
+                'status' => 'OK',
+                'message' => 'Data Berhasil Dibaca',
+                'data' => $data
+            ];
+        } catch (QueryException $error) {
+            $status = [
+                'code' => 500,
+                'status' => 'Internal Server Error',
+                'message' => $error
+            ];
+        }
+        return $status;
+    }
+
     public function getFeedsAppend($offset = 0, $limit = 6)
     {
         try {

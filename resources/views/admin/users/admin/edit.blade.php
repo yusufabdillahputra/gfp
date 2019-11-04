@@ -214,6 +214,31 @@
                             @method('PUT')
                             <input type="hidden" value="{{ $data->id_users }}" name="id_users">
                             <input type="hidden" value="{{ $session['id_users'] }}" name="updated_by">
+                            {{-- START Request Feed --}}
+                            <div class="form-group row">
+                                <label class="col-md-3 control-label">Request Feed (Landing)</label>
+                                <div class="col-md-9">
+                                    <p>Read</p>
+                                    <p class="hint-text small">Apa anda ingin pengguna berikut ini dapat melihat isi konten ?</p>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="radio radio-success">
+                                                <input type="radio" name="reqfeed_read"
+                                                       @if($rules->reqfeed->read == 1) checked="checked" @endif
+                                                       value="1" id="reqfeed_read_true">
+                                                <label for="reqfeed_read_true">Ya</label>
+
+                                                <input type="radio" name="reqfeed_read"
+                                                       @if($rules->reqfeed->read == 0) checked="checked" @endif
+                                                       value="0" id="reqfeed_read_false">
+                                                <label for="reqfeed_read_false">Tidak</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- END Request Feed --}}
+
                             {{-- START landing --}}
                             <div class="form-group row">
                                 <label class="col-md-3 control-label">Landing</label>
