@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="{{ asset('template/landing/js/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template/landing/js/plugins/dropzonejs/dist/dropzone.css') }}">
     <link rel="stylesheet" href="{{ asset('template/landing/js/plugins/sweetalert2/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/landing/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/landing/js/plugins/summernote/summernote-bs4.css') }}">
 
     <!-- Fonts and Codebase framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">

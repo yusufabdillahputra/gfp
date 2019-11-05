@@ -8,6 +8,8 @@
 <script src="{{ asset('template/landing/js/plugins/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
 <script src="{{ asset('template/landing/js/plugins/es6-promise/es6-promise.auto.min.js') }}"></script>
 <script src="{{ asset('template/landing/js/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('template/landing/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('template/landing/js/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
 <!-- BEGIN AUTONUMERIC JS -->
 <script type="text/javascript" src="{{ asset('template/admin/assets/plugins/jquery-autonumeric/autoNumeric.js') }}"></script>
