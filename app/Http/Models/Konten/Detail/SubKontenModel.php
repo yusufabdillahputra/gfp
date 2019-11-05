@@ -27,6 +27,7 @@ class SubKontenModel extends Model
         "posisi_subk",
         'isi_subk',
         'broadcast_subk',
+        'campaign_subk',
         "created_by",
         "updated_by",
         "updated_at",
@@ -43,6 +44,34 @@ class SubKontenModel extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
+
+    /**
+     * Mengambil data berdasarkan primary key
+     * Method   : GET
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function getCampaign()
+    {
+        try {
+            $data = self::where('campaign_subk', 2)->first();
+            $status = [
+                'code' => 200,
+                'status' => 'OK',
+                'message' => 'Data Berhasil Dibaca',
+                'data' => $data
+            ];
+        } catch (QueryException $error) {
+            $status = [
+                'code' => 500,
+                'status' => 'Internal Server Error',
+                'message' => $error
+            ];
+        }
+        return $status;
+    }
+
 
     /**
      * Mengambil data berdasarkan primary key
@@ -133,10 +162,18 @@ class SubKontenModel extends Model
     public function updateById($array_data)
     {
         try {
+            $status_campaign = $array_data['campaign_subk'];
+            if ($status_campaign == 2) {
+                $ex_campaign = self::select($this->primaryKey)->where('campaign_subk', 2)->first();
+                if (!empty($ex_campaign)) {
+                    self::where($this->primaryKey, $ex_campaign->id_feed)->update(["campaign_subk" => 1]);
+                }
+            }
             self::where($this->primaryKey, $array_data[$this->primaryKey])
                 ->update([
                     'judul_subk' => $array_data['judul_subk'],
                     'isi_subk' => $array_data['isi_subk'],
+                    'campaign_subk' => $array_data['campaign_subk'],
                     'updated_by' => $array_data['updated_by'],
                     'updated_at' => date("Y-m-d H:i:s")
                 ]);
@@ -315,7 +352,7 @@ class SubKontenModel extends Model
         ];
         $emails = $Users_Model->getEmail()['data'];
         Mail::send('mail.konten', $data, function($message) use ($emails)
-        {    
+        {
             $message->to($emails)
                     ->from('noreply@globalfundforprosperity.com')
                     ->subject('Konten | Global Fund For Prosperity');
@@ -344,11 +381,20 @@ class SubKontenModel extends Model
         }
 
         try {
+            $status_campaign = $array_data['dtl']['campaign_subk'];
+            if ($status_campaign == 2) {
+                $ex_campaign = self::select($this->primaryKey)->where('campaign_subk', 2)->first();
+                if (!empty($ex_campaign)) {
+                    self::where($this->primaryKey, $ex_campaign->id_feed)->update(["campaign_subk" => 1]);
+                }
+            }
+
             self::where($this->primaryKey, $array_data['dtl'][$this->primaryKey])
                 ->update([
                     'posisi_subk' => $array_data['dtl']['posisi_subk'],
                     'isi_subk' => $array_data['dtl']['isi_subk'],
                     'broadcast_subk' => $array_data['dtl']['broadcast_subk'],
+                    'campaign_subk' => $array_data['dtl']['campaign_subk'],
                     'updated_by' => $array_data['dtl']['updated_by'],
                     'updated_at' => date("Y-m-d H:i:s")
                 ]);

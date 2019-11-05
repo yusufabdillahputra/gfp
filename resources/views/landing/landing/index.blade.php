@@ -46,7 +46,7 @@
                 <div class="slick_campaign">
                     @foreach ($gambar_campaign as $key_array => $gambar)
                         <div class="pull-center">
-                            <img class="img-fluid" src="{{ Storage::url($gambar->path_img_feed) }}" alt="Campaign">
+                            <img class="img-fluid" src="{{ Storage::url($gambar->path_img_subk) }}" alt="Campaign">
                         </div>
                     @endforeach
                 </div>

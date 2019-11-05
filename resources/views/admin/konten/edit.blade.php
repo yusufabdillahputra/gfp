@@ -115,6 +115,23 @@
                         <br><i class="fa fa-exclamation-circle"></i> Apabila form gambar bekerja form deskripsi dibawah apabila belum di save akan di set ke awal.
                     </p>
                     <div class="form-group row">
+                        <label class="col-md-3 control-label">Campaign</label>
+                        <div class="col-md-9">
+                            <div class="radio radio-success">
+                                <input type="radio"
+                                       @if($data->campaign_subk == 1) checked="checked" @endif
+                                       value="1" name="dtl[campaign_subk]" id="tidak">
+                                <label for="tidak">Tidak</label>
+
+                                <input type="radio"
+                                       @if($data->campaign_subk == 2) checked="checked" @endif
+                                       value="2" name="dtl[campaign_subk]" id="ya">
+                                <label for="ya">Ya</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label class="col-md-3 control-label">Posisi Sub Konten</label>
                         <div class="col-md-9">
                             <div class="radio radio-success">

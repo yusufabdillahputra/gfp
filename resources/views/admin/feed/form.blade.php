@@ -133,6 +133,7 @@
                     </p>
                     <div class="card card-default bg-complete-lighter">
                         <div class="card-block">
+                            {{--
                             <div class="form-group row">
                                 <label class="col-md-3 control-label">Campaign</label>
                                 <div class="col-md-9">
@@ -149,6 +150,7 @@
                                     </div>
                                 </div>
                             </div>
+                            --}}
                             <div class="form-group row">
                                 <label class="col-md-3 control-label">Prioritas</label>
                                 <div class="col-md-9">

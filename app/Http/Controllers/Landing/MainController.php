@@ -7,13 +7,14 @@ use App\Http\Models\Donasi\Selain_Uang\DonasiFeedModel;
 use App\Http\Models\Donasi\Source\Src_DonasiModel;
 use App\Http\Models\Feed\Resource\FeedModel;
 use App\Http\Models\Feed\Source\Img_FeedModel;
+use App\Http\Models\Konten\Detail\SubKontenModel;
+use App\Http\Models\Konten\Source\Img_SubKontenModel;
 use App\Http\Models\Label\Resource\LabelModel;
 use App\Http\Models\Label\Source\Src_LabelModel;
 use App\Http\Models\Payment\Resource\PaymentModel;
 use App\Http\Models\Transaksi\Detail\TransaksiModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Parent\LandingController;
-use Illuminate\Support\Facades\Hash;
 
 class MainController extends LandingController
 {
@@ -21,6 +22,7 @@ class MainController extends LandingController
     {
         parent::__construct('landing');
         $this->rsc_model['FeedModel'] = new FeedModel();
+        $this->rsc_model['SubKontenModel'] = new SubKontenModel();
         $this->rsc_model['PaymentModel'] = new PaymentModel();
         $this->rsc_model['LabelModel'] = new LabelModel();
         $this->rsc_model['DonasiModel'] = new DonasiModel();
@@ -28,6 +30,7 @@ class MainController extends LandingController
         $this->src_model['Src_LabelModel'] = new Src_LabelModel();
         $this->src_model['Src_DonasiModel'] = new Src_DonasiModel();
         $this->src_model['Img_FeedModel'] = new Img_FeedModel();
+        $this->src_model['Img_SubKontenModel'] = new Img_SubKontenModel();
 
         $this->dtl_model['TransaksiModel'] = new TransaksiModel();
 
@@ -37,8 +40,8 @@ class MainController extends LandingController
 
     public function index(Request $request)
     {
-        $data_campaign = $this->rsc_model['FeedModel']->getCampaign()['data'];
-        $gambar_campaign = !empty($data_campaign) ? $this->src_model['Img_FeedModel']->getAllByForeignKey($data_campaign->id_feed)['data'] : null;
+        $data_campaign = $this->rsc_model['SubKontenModel']->getCampaign()['data'];
+        $gambar_campaign = !empty($data_campaign) ? $this->src_model['Img_SubKontenModel']->getAllByForeignKey($data_campaign->id_subk)['data'] : null;
         return $this->pathView('index', [
             'data_campaign' => $data_campaign,
             'gambar_campaign' => $gambar_campaign,

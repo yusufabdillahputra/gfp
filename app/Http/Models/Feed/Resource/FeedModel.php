@@ -334,13 +334,13 @@ class FeedModel extends Model
             /**
              * Reset status campaign apabila ada campaign yang aktif
              */
-            $status_campaign = $array_data['campaign_feed'];
-            if ($status_campaign == 2) {
-                $ex_campaign = self::select($this->primaryKey)->where('campaign_feed', 2)->first();
-                if (!empty($ex_campaign)) {
-                    self::where($this->primaryKey, $ex_campaign->id_feed)->update(["campaign_feed" => 1]);
-                }
-            }
+//            $status_campaign = $array_data['campaign_feed'];
+//            if ($status_campaign == 2) {
+//                $ex_campaign = self::select($this->primaryKey)->where('campaign_feed', 2)->first();
+//                if (!empty($ex_campaign)) {
+//                    self::where($this->primaryKey, $ex_campaign->id_feed)->update(["campaign_feed" => 1]);
+//                }
+//            }
 
             /**
              * Proses update data detail
@@ -349,7 +349,7 @@ class FeedModel extends Model
                 ->update([
                     'judul_feed' => $array_data['judul_feed'],
                     "draft_feed" => $array_data['draft_feed'],
-                    "campaign_feed" => $array_data['campaign_feed'],
+                    "campaign_feed" => 1,
                     "prioritas_feed" => $array_data['prioritas_feed'],
                     "sub_judul_feed" => $array_data['sub_judul_feed'],
                     "isi_feed" => $array_data['isi_feed'],

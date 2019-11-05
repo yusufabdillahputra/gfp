@@ -149,7 +149,8 @@
             </div>
             <div class="block block-rounded">
                 <div class="block-content block-content-full">
-                    <div class="form-group row">
+                    {{--
+                     <div class="form-group row">
                         <label class="col-12">Campaign</label>
                         <div class="col-12">
                             <div class="custom-control custom-radio custom-control-inline mb-5">
@@ -166,6 +167,7 @@
                             </div>
                         </div>
                     </div>
+                    --}}
                     <div class="form-group row">
                         <label class="col-12">Prioritas</label>
                         <div class="col-12">
