@@ -90,6 +90,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-12">Telp. / Hp</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control" value="{{ $data->telp_users }}"
+                                               name="rsc[telp_users]" placeholder="0000-0000-0000" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-12">Jenis Kelamin</label>
                                     <div class="col-12">
                                         <div class="custom-control custom-radio custom-control-inline mb-5">
