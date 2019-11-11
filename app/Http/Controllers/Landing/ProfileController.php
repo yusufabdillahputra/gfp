@@ -95,5 +95,18 @@ class ProfileController extends LandingController
         // return ?? with(['success' => 'Foto Berhasil dirubah']);
     }
 
+    public function requestFeed(Request $request)
+    {
+
+        $status = $this->rsc_model->requestFeed($request->all());
+        $redirect = redirect()->back();
+        if ($status['code'] == 200) {
+            return $redirect->with(['success' => $status['message']]);
+        }
+        if ($status['code'] == 500) {
+            return $redirect->with(['error' => $status['message']]);
+        }
+    }
+
 
 }

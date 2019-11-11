@@ -92,6 +92,29 @@
                         </div>
                     </div>
                 @endif
+                <div class="col-md-4">
+                    <div data-pages="card" class="card card-default mt-2" id="card-basic">
+                        <div class="card-header separator">
+                            <img class="card-img-top img-fluid rounded mx-auto d-block"
+                                 src="{{ asset('image/sys/users/request.png') }}" alt="Request">
+                        </div>
+                        <div class="card-block">
+                            <h3>
+                                <span class="semi-bold">Request Feed</span>
+                            </h3>
+                            <p>
+                                Pemberian akses request feed
+                                <br><br>
+                            </p>
+                            <div class="btn-group">
+                                <a href="{{ route('users.reqfeed.index') }}"
+                                   class="btn btn-primary btn-cons btn-animated from-left fa fa-arrow-right">
+                                    <span>List</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

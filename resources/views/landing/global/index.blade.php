@@ -206,6 +206,7 @@
     <!-- END Footer -->
     @isset($session)
     {{ view('landing.global.modal.password', ['data' => $session]) }}
+    {{ view('landing.global.modal.reqfeed') }}
     {{ view('landing.global.modal.logout') }}
     @endisset
     @yield('modal')

@@ -653,4 +653,16 @@ class UsersController extends AdminController
         }
     }
 
+    public function reqfeedIndex(Request $request)
+    {
+        return $this->pathView('reqfeed.index', [
+            'breadcrumbs' => Breadcrumbs::render('users.reqfeed.index')
+        ]);
+    }
+
+    public function dataTableQueryReqfeed()
+    {
+        return $this->rsc_model->dataTableQueryReqfeed();
+    }
+
 }

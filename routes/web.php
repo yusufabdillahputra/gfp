@@ -437,6 +437,18 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'users', 'as' => 'user
         ]);
     });
 
+    Route::group(['prefix' => 'reqfeed', 'as' => 'reqfeed.'], function () {
+        Route::get('/', [
+            'as' => 'index',
+            'uses' => 'Admin\UsersController@reqfeedIndex'
+        ]);
+
+        Route::get('/dtQueryReqfeed', [
+            'uses' => 'Admin\UsersController@dataTableQueryReqfeed'
+        ]);
+
+    });
+
 });
 
 Route::group(['middleware' => 'checksession', 'prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
@@ -727,6 +739,11 @@ Route::group(['prefix' => 'f', 'as' => 'frontend.'], function () {
             'uses' => 'Landing\KontenController@index'
         ]);
     });
+
+    Route::put('/request/feed', [
+        'as' => 'request.feed',
+        'uses' => 'Landing\ProfileController@requestFeed'
+    ]);
 
     Route::group(['middleware' => 'checksession', 'prefix' => 'profile', 'as' => 'profile.'], function () {
 

@@ -277,4 +277,5 @@ class DonaturModel extends Model
             })->make(true);
         return $data_table;
     }
+
 }

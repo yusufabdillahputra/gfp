@@ -5,8 +5,10 @@ namespace App\Http\Models\Users\Resource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\DataTables;
 
 class UsersModel extends Model
 {
@@ -28,6 +30,7 @@ class UsersModel extends Model
         "remember_token",
         "jenis_kelamin_users",
         "foto_users",
+        "reqfeed_users",
         "rules_users",
         "updated_by",
         "updated_at",
@@ -282,6 +285,29 @@ class UsersModel extends Model
                 'status' => 'OK',
                 'message' => 'Data Berhasil Diubah',
                 'data' => $array_data
+            ];
+        } catch (QueryException $error) {
+            $status = [
+                'code' => 500,
+                'status' => 'Internal Server Error',
+                'message' => $error
+            ];
+        }
+        return $status;
+    }
+
+    public function requestFeed($array_data)
+    {
+        try {
+            self::where($this->primaryKey, $array_data['id_users'])
+                ->update([
+                    'reqfeed_users' => true,
+                    'reqfeed_at' => date("Y-m-d H:i:s")
+                ]);
+            $status = [
+                'code' => 200,
+                'status' => 'OK',
+                'message' => 'Akses berhasil diminta'
             ];
         } catch (QueryException $error) {
             $status = [
@@ -548,6 +574,7 @@ class UsersModel extends Model
             self::where($this->primaryKey, $array_data[$this->primaryKey])
                 ->update([
                     'rules_users' => json_encode($raw_array),
+                    'reqfeed_users' => 0,
                     'updated_by' => $array_data['updated_by'],
                     'updated_at' => date("Y-m-d H:i:s")
                 ]);
@@ -565,6 +592,22 @@ class UsersModel extends Model
             ];
         }
         return $status;
+    }
+
+    public function dataTableQueryReqfeed()
+    {
+        $query = self::select('id_users', 'nama_users', 'reqfeed_at', 'reqfeed_users')
+            ->where('reqfeed_users', true)
+            ->where('akses_users', 3)
+            ->orderBy('reqfeed_at', 'desc');
+        $data_table = Datatables::of($query)
+            ->addColumn('action', function ($data) {
+                return '<div class="btn-group">
+                <a href="' . route('users.donatur.edit') . '?id=' . encrypt($data->id_users) . '" class="btn btn-xs btn-complete"><i class="fa fa-edit"></i> Ubah Rule</a>
+                </div>
+                ';
+            })->make(true);
+        return $data_table;
     }
 
 }

@@ -56,6 +56,12 @@ Breadcrumbs::for('users.profile.index', function ($trail) {
     $trail->push('Ubah Profile', route('users.profile.index'));
 });
 
+// Home > Pengguna > Daftar Request
+Breadcrumbs::for('users.reqfeed.index', function ($trail) {
+    $trail->parent('users.index');
+    $trail->push('Daftar Request', route('users.reqfeed.index'));
+});
+
 /**
  * Konten
  */

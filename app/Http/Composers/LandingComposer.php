@@ -22,6 +22,7 @@ class LandingComposer
             $this->foto_users = Storage::url($this->rsc_model['UsersModel']->fotoUsers($request->session()->get('id_users')));
             $this->saldo = $this->rsc_model['DompetModel']->getById($request->session()->get('id_users'), 'BY_FOREIGN')['data']['saldo_dompet'];
             $this->id_dompet = $this->rsc_model['DompetModel']->getById($request->session()->get('id_users'), 'BY_FOREIGN')['data']['id_dompet'];
+            $this->reqfeed_status = $this->rsc_model['UsersModel']->getById($request->session()->get('id_users'))['data']->reqfeed_users;
             $this->session = $request->session()->all();
             $this->rules = $this->rsc_model['UsersModel']->getUsersRulesById($request->session()->get('id_users'))['data'];
         }
@@ -37,6 +38,7 @@ class LandingComposer
                 'composers_rules_users' => json_decode($this->rules),
                 'composers_saldo_dompet' => $this->saldo,
                 'composers_id_dompet' => $this->id_dompet,
+                'composers_reqfeed_status' => $this->reqfeed_status,
                 'mst_konten_footer' => $this->dtl_model['SubKontenModel']->getFooterKonten()['data'],
                 'mst_konten_header' => $this->dtl_model['SubKontenModel']->getHeaderKonten()['data']
             ]);

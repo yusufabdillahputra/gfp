@@ -26,6 +26,12 @@
                         <i class="si si-book-open"></i> Request Feed
                     </a>
                 </li>
+        @elseif($composers_rules_users->reqfeed->read == 0)
+            <li>
+                <a href="#modal_reqfeed" data-toggle="modal" class="text-white">
+                    <i class="si si-book-open"></i> Request Feed
+                </a>
+            </li>
         @endif
 
         @if (count($mst_konten_header))
