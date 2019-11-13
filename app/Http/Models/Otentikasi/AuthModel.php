@@ -2,6 +2,7 @@
 
 namespace App\Http\Models\Otentikasi;
 
+use App\Http\Models\Users\Log\LogModel;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
@@ -64,6 +65,17 @@ class AuthModel extends Model
                     'akses_users' => $data['akses_users'],
                     'nama_users' => $data['nama_users']
                 ]);
+
+                /**
+                 * Set Log Login Pengguna
+                 */
+                $LogModel = new LogModel();
+                $log_data = [
+                    'tipe_log' => 1,
+                    'id_users' => $data['id_users']
+                ];
+                $LogModel->createData($log_data);
+
                 if ($data['akses_users'] == env('AKSES_ROOT') OR $data['akses_users'] == env('AKSES_ADMIN')) {
                     return redirect()->route('dashboard.index');
                 } else {
@@ -87,6 +99,16 @@ class AuthModel extends Model
         /**
          * ######################################################
          */
+
+        /**
+         * Set Log Logout Pengguna
+         */
+        $LogModel = new LogModel();
+        $log_data = [
+            'tipe_log' => 2,
+            'id_users' => Session::get('id_users')
+        ];
+        $LogModel->createData($log_data);
 
         Session::flush();
         return redirect()->route('index');
@@ -112,7 +134,7 @@ class AuthModel extends Model
     {
         try {
             DB::table('tbl_dtl_transaksi')
-                ->where('created_at', '<=', Carbon::now()->addDay()->toDateTimeString())
+                ->where('created_at', Carbon::now()->addDay()->toDateTimeString())
                 ->where('status_transaksi', 0)
                 ->update([
                     'status_transaksi' => 3,

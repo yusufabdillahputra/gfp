@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Models\Users\Log\LogModel;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ class UsersController extends AdminController
         $this->dtl_model['DonaturModel'] = new DonaturModel();
         $this->dtl_model['AdminModel'] = new AdminModel();
         $this->dtl_model['RootModel'] = new RootModel();
+        $this->log_model['LogModel'] = new LogModel();
     }
 
     /**
@@ -663,6 +665,30 @@ class UsersController extends AdminController
     public function dataTableQueryReqfeed()
     {
         return $this->rsc_model->dataTableQueryReqfeed();
+    }
+
+    public function loginIndex(Request $request)
+    {
+        return $this->pathView('log.login', [
+            'breadcrumbs' => Breadcrumbs::render('users.login.index')
+        ]);
+    }
+
+    public function dataTableQueryLogin()
+    {
+        return $this->log_model['LogModel']->dataTableQueryLogin();
+    }
+
+    public function logoutIndex(Request $request)
+    {
+        return $this->pathView('log.logout', [
+            'breadcrumbs' => Breadcrumbs::render('users.logout.index')
+        ]);
+    }
+
+    public function dataTableQueryLogout()
+    {
+        return $this->log_model['LogModel']->dataTableQueryLogout();
     }
 
 }

@@ -10,25 +10,27 @@ use Illuminate\Support\Facades\DB;
 class DashboardModel extends Model
 {
 
-    public $RSC;
-    public $DTL;
-    public $SRC;
-    public $VW;
-
-    public function __construct()
+    public function getTransaksiToday()
     {
-        $this->RSC = [
-
+        $prop = [
+            'table' => 'dsh_transaksi'
         ];
-        $this->DTL = [
-
-        ];
-        $this->SRC = [
-
-        ];
-        $this->VW = [
-
-        ];
+        try {
+            $fetch = DB::table($prop['table'])->first();
+            $status = [
+                'code' => 200,
+                'status' => 'OK',
+                'message' => 'Data Berhasil Dibaca',
+                'data' => $fetch
+            ];
+        } catch (QueryException $error) {
+            $status = [
+                'code' => 500,
+                'status' => 'Internal Server Error',
+                'message' => $error
+            ];
+        }
+        return $status;
     }
 
     public function getUserTopDonasi() {

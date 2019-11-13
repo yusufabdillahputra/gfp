@@ -62,6 +62,18 @@ Breadcrumbs::for('users.reqfeed.index', function ($trail) {
     $trail->push('Daftar Request', route('users.reqfeed.index'));
 });
 
+// Home > Pengguna > login
+Breadcrumbs::for('users.login.index', function ($trail) {
+    $trail->parent('users.index');
+    $trail->push('Daftar Log Pengguna Login', route('users.login.index'));
+});
+
+// Home > Pengguna > login
+Breadcrumbs::for('users.logout.index', function ($trail) {
+    $trail->parent('users.index');
+    $trail->push('Daftar Log Pengguna Logout', route('users.logout.index'));
+});
+
 /**
  * Konten
  */

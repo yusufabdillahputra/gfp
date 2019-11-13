@@ -166,7 +166,7 @@ class SubKontenModel extends Model
             if ($status_campaign == 2) {
                 $ex_campaign = self::select($this->primaryKey)->where('campaign_subk', 2)->first();
                 if (!empty($ex_campaign)) {
-                    self::where($this->primaryKey, $ex_campaign->id_feed)->update(["campaign_subk" => 1]);
+                    self::where($this->primaryKey, $ex_campaign->id_subk)->update(["campaign_subk" => 1]);
                 }
             }
             self::where($this->primaryKey, $array_data[$this->primaryKey])
@@ -385,7 +385,7 @@ class SubKontenModel extends Model
             if ($status_campaign == 2) {
                 $ex_campaign = self::select($this->primaryKey)->where('campaign_subk', 2)->first();
                 if (!empty($ex_campaign)) {
-                    self::where($this->primaryKey, $ex_campaign->id_feed)->update(["campaign_subk" => 1]);
+                    self::where($this->primaryKey, $ex_campaign->id_subk)->update(["campaign_subk" => 1]);
                 }
             }
 

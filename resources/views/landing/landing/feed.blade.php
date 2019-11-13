@@ -176,7 +176,8 @@
                                                     <button type="button" data-dismiss="modal"
                                                             class="btn btn-alt-secondary">Tidak
                                                     </button>
-                                                    <button id="btn_submit_donasi_uang" type="submit" class="btn btn-alt-primary">Ya, saya yakin
+                                                    <button id="btn_submit_donasi_uang" type="submit"
+                                                            class="btn btn-alt-primary">Ya, saya yakin
                                                     </button>
                                                 </div>
                                             </div>
@@ -188,7 +189,8 @@
                         <div class="tab-pane" id="benda" role="tabpanel">
                             <h4 class="font-w400">Kebutuhan</h4>
                             <hr>
-                            <form class="js-validation-bootstrap" id="form_donasi_benda" action="{{ route('landing.kebutuhan.post') }}" method="POST"
+                            <form class="js-validation-bootstrap" id="form_donasi_benda"
+                                  action="{{ route('landing.kebutuhan.post') }}" method="POST"
                                   autocomplete="off">
                                 @csrf
                                 <input type="hidden" value="{{ $session['id_users'] }}" name="created_by">
@@ -198,7 +200,8 @@
                                         <select class="form-control" id="id_src_donasi" name="id_src_donasi" required>
                                             <option value="" selected disabled>Pilih Jenis Kebutuhan</option>
                                             @foreach($feed_donasi_bukan_uang as $kebutuhan)
-                                                <option value="{{ $kebutuhan->id_src_donasi }}">{{ $kebutuhan->nama_donasi }}</option>
+                                                <option
+                                                    value="{{ $kebutuhan->id_src_donasi }}">{{ $kebutuhan->nama_donasi }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -208,7 +211,8 @@
                                         <div class="form-group">
                                             <label class="col-12" for="jumlah_feed_satuan">Jumlah</label>
                                             <div class="col-md-12">
-                                                <input type="number" class="form-control" min="0" id="jumlah_feed_satuan" name="jumlah_feed_satuan" required>
+                                                <input type="number" class="form-control" min="0"
+                                                       id="jumlah_feed_satuan" name="jumlah_feed_satuan" required>
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +223,8 @@
                                                 <select class="form-control" id="id_satuan" name="id_satuan" required>
                                                     <option value="" selected disabled>Pilih Satuan</option>
                                                     @foreach($rsc_satuan as $satuan)
-                                                        <option value="{{ $satuan->id_satuan }}">{{ $satuan->nama_satuan }}</option>
+                                                        <option
+                                                            value="{{ $satuan->id_satuan }}">{{ $satuan->nama_satuan }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -228,7 +233,9 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-block btn-alt-primary"><i class="fa fa-send"></i> Kirim...</button>
+                                        <button type="submit" class="btn btn-block btn-alt-primary"><i
+                                                class="fa fa-send"></i> Kirim...
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -237,6 +244,44 @@
                 </div>
             </div>
         @endisset
+
+        <div class="block block-rounded">
+            <div class="block-header">
+                <h4>
+                    Bagikan Link
+                </h4>
+            </div>
+            <div class="block-content block-content-full">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="btn-group">
+                            <div class="fb-share-button"
+                                 data-href="{{ route('landing.feed').'?id='.encrypt($data->id_feed) }}"
+                                 data-layout="button_count" data-size="small">
+                                <a
+                                    target="_blank"
+                                    href="https://www.facebook.com/sharer/sharer.php?u={{ route('landing.feed').'?id='.encrypt($data->id_feed) }}&amp;src=sdkpreparse"
+                                    class="fb-xfbml-parse-ignore btn btn-lg btn-circle btn-outline-primary mr-5 mb-5">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
+                            </div>
+                            <a class="btn btn-lg btn-circle btn-outline-primary mr-5 mb-5"
+                               href="whatsapp://send?text={{ route('landing.feed').'?id='.encrypt($data->id_feed) }}">
+                                <i class="fa fa-whatsapp"></i>
+                            </a>
+                            <a target="_blank" class="btn btn-lg btn-circle btn-outline-primary mr-5 mb-5"
+                               href="https://twitter.com/intent/tweet?text={{ route('landing.feed').'?id='.encrypt($data->id_feed) }}">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a target="_blank" class="btn btn-lg btn-square btn-outline-primary mr-5 mb-5"
+                               href="{{ route('landing.feed.qrcode').'?id='.encrypt($data->id_feed) }}">
+                                <i class="fa fa-qrcode"></i> Generate QR Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="block block-rounded">
             <div class="block-header">

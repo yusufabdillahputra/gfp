@@ -13,6 +13,8 @@ use App\Http\Models\Label\Resource\LabelModel;
 use App\Http\Models\Label\Source\Src_LabelModel;
 use App\Http\Models\Payment\Resource\PaymentModel;
 use App\Http\Models\Transaksi\Detail\TransaksiModel;
+use App\Http\Models\Users\Log\LogModel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Parent\LandingController;
 
@@ -158,7 +160,14 @@ class MainController extends LandingController
 
     public function coba()
     {
+        return null;
+    }
 
+    public function qrcodeFeed(Request $request)
+    {
+        return $this->pathView('qrcode', [
+            'link' => route('landing.feed').'?id='.$request->get('id'),
+        ]);
     }
 
     public function rule()

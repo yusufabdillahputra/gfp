@@ -115,6 +115,52 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div data-pages="card" class="card card-default mt-2" id="card-basic">
+                        <div class="card-header separator">
+                            <img class="card-img-top img-fluid rounded mx-auto d-block"
+                                 src="{{ asset('image/sys/users/logout.png') }}" alt="Request">
+                        </div>
+                        <div class="card-block">
+                            <h3>
+                                <span class="semi-bold">Daftar Logout</span>
+                            </h3>
+                            <p>
+                                Daftar log pengguna yang telah logout
+                                <br><br>
+                            </p>
+                            <div class="btn-group">
+                                <a href="{{ route('users.logout.index') }}"
+                                   class="btn btn-primary btn-cons btn-animated from-left fa fa-arrow-right">
+                                    <span>List</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div data-pages="card" class="card card-default mt-2" id="card-basic">
+                        <div class="card-header separator">
+                            <img class="card-img-top img-fluid rounded mx-auto d-block"
+                                 src="{{ asset('image/sys/users/login.png') }}" alt="Request">
+                        </div>
+                        <div class="card-block">
+                            <h3>
+                                <span class="semi-bold">Daftar Login</span>
+                            </h3>
+                            <p>
+                                Daftar log pengguna yang telah login
+                                <br><br>
+                            </p>
+                            <div class="btn-group">
+                                <a href="{{ route('users.login.index') }}"
+                                   class="btn btn-primary btn-cons btn-animated from-left fa fa-arrow-right">
+                                    <span>List</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

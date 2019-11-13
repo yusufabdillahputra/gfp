@@ -46,7 +46,9 @@
                 <div class="slick_campaign">
                     @foreach ($gambar_campaign as $key_array => $gambar)
                         <div class="pull-center">
-                            <img class="img-fluid" src="{{ Storage::url($gambar->path_img_subk) }}" alt="Campaign">
+                            <a class="img-link" href="{{ route('frontend.konten.index').'?id='.encrypt($gambar->id_subk) }}">
+                                <img class="img-fluid" src="{{ Storage::url($gambar->path_img_subk) }}" alt="Campaign">
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -211,8 +213,10 @@
 @endsection
 
 @push('script')
-    <script async defer crossorigin="anonymous"
+    {{--
+     <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v4.0"></script>
+     --}}
     <script type="text/javascript" src="{{ asset('js/landing/main/campaign/script_landing.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/landing/main/index.js') }}"></script>
 

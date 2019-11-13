@@ -449,6 +449,30 @@ Route::group(['middleware' => 'checksession', 'prefix' => 'users', 'as' => 'user
 
     });
 
+    Route::group(['prefix' => 'login', 'as' => 'login.'], function () {
+        Route::get('/', [
+            'as' => 'index',
+            'uses' => 'Admin\UsersController@loginIndex'
+        ]);
+
+        Route::get('/dtQueryLogin', [
+            'uses' => 'Admin\UsersController@dataTableQueryLogin'
+        ]);
+
+    });
+
+    Route::group(['prefix' => 'logout', 'as' => 'logout.'], function () {
+        Route::get('/', [
+            'as' => 'index',
+            'uses' => 'Admin\UsersController@logoutIndex'
+        ]);
+
+        Route::get('/dtQueryLogout', [
+            'uses' => 'Admin\UsersController@dataTableQueryLogout'
+        ]);
+
+    });
+
 });
 
 Route::group(['middleware' => 'checksession', 'prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
@@ -605,6 +629,11 @@ Route::group(['prefix' => 'landing', 'as' => 'landing.'], function () {
     Route::get('/coba', [
         'as' => 'coba',
         'uses' => 'Landing\MainController@coba'
+    ]);
+
+    Route::get('/feed/qrcode', [
+        'as' => 'feed.qrcode',
+        'uses' => 'Landing\MainController@qrcodeFeed'
     ]);
 
 });

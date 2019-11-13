@@ -23,7 +23,8 @@ class DashboardController extends AdminController
             'total_donasi' => $this->model->getTotalDonasi()['data'],
             'transaksi_donasi_now' => $this->model->getTransaksiDonasiHariIni()['data'],
             'transaksi_topup_now' => $this->model->getTransaksiTopupHariIni()['data'],
-            'transaksi_tarik_now' => $this->model->getTransaksiTarikHariIni()['data']
+            'transaksi_tarik_now' => $this->model->getTransaksiTarikHariIni()['data'],
+            'transaksi_today' => $this->model->getTransaksiToday()['data']
         ]);
     }
 }

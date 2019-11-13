@@ -60,8 +60,14 @@
                                 <div class="form-group row">
                                     <div class="col-12">
                                         <label for="email_users">Email</label>
-                                        <input autofocus type="email" class="form-control" id="email_users"
+                                        <input type="email" class="form-control" id="email_users"
                                                name="email_users" required>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <label for="telp_users">No Telp.</label>
+                                        <input  type="text" class="form-control" id="telp_users" name="telp_users" required>
                                     </div>
                                 </div>
                             </div>

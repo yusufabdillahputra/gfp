@@ -26,6 +26,9 @@ $(document).ready(function () {
             email_users: {
                 required: true,
                 email: true
+            },
+            telp_users: {
+                required: true
             }
         },
         messages: {
@@ -41,7 +44,10 @@ $(document).ready(function () {
             email_users: {
                 required: 'Tolong masukkan email anda',
                 email: 'Format email anda salah'
-            }
+            },
+            telp_users: {
+                required: 'Tolong masukkan nomor telphone anda'
+            },
         },
     });
 });

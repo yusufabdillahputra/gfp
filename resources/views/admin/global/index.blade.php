@@ -4,7 +4,7 @@
     print view('admin.global.partials.head');
 @endphp
 
-<body class="fixed-header">
+<body class="fixed-header menu-pin">
 <nav class="page-sidebar" data-pages="sidebar">
     <!-- BEGIN SIDEBAR MENU HEADER-->
     <div class="sidebar-header">

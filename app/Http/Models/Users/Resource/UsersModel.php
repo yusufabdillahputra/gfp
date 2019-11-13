@@ -234,6 +234,7 @@ class UsersModel extends Model
                 'password_users' => Hash::make($request_data['password_users']),
                 'nama_users' => $request_data['nama_users'],
                 'email_users' => $request_data['email_users'],
+                'telp_users' => $request_data['telp_users'],
                 'remember_token' => encrypt(rand(1, 99)),
                 'created_by' => 0
             ]);
