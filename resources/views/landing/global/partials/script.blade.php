@@ -1,5 +1,5 @@
-<script src="{{ asset('template/landing/js/codebase.app.js') }}"></script>
-<script src="{{ asset('template/landing/js/laravel.app.js') }}"></script>
+<script src="{{ asset('template/landing/js/codebase.app.min.js') }}"></script>
+<script src="{{ asset('template/landing/js/codebase.core.min.js') }}"></script>
 <script src="{{ asset('template/landing/js/plugins/slick/slick.min.js') }}"></script>
 <script src="{{ asset('template/landing/js/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('template/landing/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>

@@ -33,7 +33,7 @@
 
         <div id="AJAX_list_kebutuhan" class="row">
             @foreach($data as $kebutuhan)
-                <div class="col-md-4 invisible" data-toggle="appear">
+                <div class="col-md-4 animation fadeIn" data-toggle="appear">
                     <div class="block block-rounded">
                         @if(!empty($kebutuhan->judul_feed))
                             <a href="{{ route('landing.feed') . '?id=' . encrypt($kebutuhan->id_feed) }}">

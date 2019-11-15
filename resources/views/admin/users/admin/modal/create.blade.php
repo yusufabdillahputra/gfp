@@ -12,7 +12,6 @@
                                 <form method="POST" id="form_create" action="{{ route('users.admin.create.post') }}"
                                       role="form" autocomplete="off">
                                     @csrf
-                                    <input type="hidden" name="rsc[password_users]" value="{{ env('DEFAULT_PASSWORD') }}">
                                     <input type="hidden" name="rsc[akses_users]" value="{{ env('AKSES_ADMIN') }}">
                                     <input type="hidden" name="rsc[created_by]" value="{{ $created_by }}">
                                     <div class="row clearfix mx-auto">
@@ -38,8 +37,24 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-group-default required">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" name="rsc[password_users]" placeholder="......." required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default required">
                                                 <label>Email</label>
                                                 <input type="email" class="form-control" name="rsc[email_users]" placeholder="......." required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-default required">
+                                                <label>Telp. / Hp</label>
+                                                <input type="text" class="form-control" name="rsc[telp_users]" placeholder="0000-0000-0000" required>
                                             </div>
                                         </div>
                                     </div>

@@ -195,7 +195,17 @@ class UsersModel extends Model
     public function createData($request_data)
     {
         try {
-            $query = self::create($request_data);
+            $query = self::create([
+                'akses_users' => $request_data['akses_users'],
+                'created_by' => $request_data['created_by'],
+                'nama_users' => $request_data['nama_users'],
+                'username_users' => $request_data['username_users'],
+                'password_users' => Hash::make($request_data['password_users']),
+                'email_users' => $request_data['email_users'],
+                'telp_users' => $request_data['telp_users'],
+                'jenis_kelamin_users' => $request_data['jenis_kelamin_users'],
+                'remember_token' => encrypt(rand(1, 99))
+            ]);
             $id = $query->id_users;
             $akses = $request_data['akses_users'];
             if ($akses == env('AKSES_ROOT')) {

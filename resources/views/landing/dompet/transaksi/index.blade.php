@@ -32,7 +32,7 @@
 
         <div id="AJAX_list_transaksi" class="row">
             @foreach($data as $transaksi)
-                <div class="col-md-4 invisible" data-toggle="appear">
+                <div class="col-md-4 animation fadeIn" data-toggle="appear">
                     <div class="block block-rounded">
                         <a href="{{ route('dompet.transaksi.detail') . '?id=' . encrypt($transaksi->id_transaksi) }}">
                             @if($transaksi->jenis_transaksi == 1)

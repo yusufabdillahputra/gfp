@@ -21,7 +21,7 @@
         @endisset
 
         <div class="row">
-            <div class="col-md-3 invisible" data-toggle="appear">
+            <div class="col-md-3 animation fadeIn" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.topup.index') }}">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 invisible" data-toggle="appear">
+            <div class="col-md-3 animation fadeIn" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.transaksi.index') }}">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 invisible" data-toggle="appear">
+            <div class="col-md-3 animation fadeIn" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.kebutuhan.index') }}">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 invisible" data-toggle="appear">
+            <div class="col-md-3 animation fadeIn" data-toggle="appear">
                 <div class="block block-rounded">
                     <div class="block-content p-0 overflow-hidden">
                         <a class="img-link" href="{{ route('dompet.penarikan.index') }}">
